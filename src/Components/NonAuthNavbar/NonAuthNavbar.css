@@ -1,0 +1,41 @@
+nav{ 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px;
+    background-color: rgba(128, 128, 128, 0.12);
+    padding: 10px;
+    border-radius: 15px;
+}
+
+.main-nav-container{
+    width:60%;
+}
+
+
+.logo-nav-container{
+    width: 40%;
+}
+
+.logo-nav-container h2{
+    margin-left: 25px;
+}
+
+.main-nav-container ul{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    list-style: none;
+}
+
+
+.main-nav-container ul a {
+    color: black;
+    text-decoration: none;
+    padding-bottom: 3px;
+    border-bottom: 2px solid transparent;
+}
+
+.main-nav-container ul a:hover{
+    border-bottom: 2px solid black;
+}

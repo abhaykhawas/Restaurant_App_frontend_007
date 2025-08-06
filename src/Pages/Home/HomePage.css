@@ -1,0 +1,28 @@
+.home-container{
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.home-container h2{
+    font-size: 75px;
+    text-align: center;
+}
+
+.home-container button{
+    font-size: 35px;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 8px;
+    background-color: black;
+    color: white;
+    margin-top: 30px;
+    cursor: pointer;
+}
+
+.home-container button a {
+    text-decoration: none;
+    color: white;
+}
