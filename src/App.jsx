@@ -8,11 +8,13 @@ import SignupPage from './Pages/Signup/SignupPage'
 import ProtectedRoute from './Components/ProtectedRoute/ProtectedRoute'
 import ProtectedMenu from './Pages/ProtectedMenu/ProtectedMenu'
 import './App.css'
+import { ToastContainer } from 'react-toastify';
 
 function App() {
 
   return (
     <div className="container">
+      <ToastContainer/>
       <BrowserRouter>
         <NonAuthNavbar/>
         <Routes>

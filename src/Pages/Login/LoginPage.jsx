@@ -3,6 +3,7 @@ import './LoginPage.css'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 function LoginPage() {
     const [email, setEmail] = useState('')
@@ -15,6 +16,7 @@ function LoginPage() {
 
         localStorage.setItem('user', JSON.stringify(res.data))
         navigate('/protected-menu')
+        toast.success('Logged in successfully !!!')
     }
     return (
     <div className='login-container'>
