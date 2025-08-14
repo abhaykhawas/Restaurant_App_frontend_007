@@ -88,6 +88,7 @@ function ProtectedMenu() {
                         <p>{e.price}</p>
                     </div>
                     <div className="menu-card-right">
+                        {/* Make this visible only when available */}
                         <div className="counter">
                             <button>-</button>
                             <h3>{menuCounters[i].counter}</h3>
