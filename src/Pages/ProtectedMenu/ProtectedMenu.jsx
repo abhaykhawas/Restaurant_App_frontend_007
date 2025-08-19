@@ -127,7 +127,7 @@ function ProtectedMenu() {
                 {
                     menuCounters.map((e, i) => (
                         e.counter > 0 ? (
-                            <div className="cart-item">
+                            <div className="cart-item" key={i}>
                                 <h4>{menu[i].name}</h4>
                                 <p>{menu[i].price * e.counter }</p>
                                 <p>{e.counter}</p>

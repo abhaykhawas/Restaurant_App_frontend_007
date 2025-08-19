@@ -7,6 +7,7 @@ import LoginPage from './Pages/Login/LoginPage'
 import SignupPage from './Pages/Signup/SignupPage'
 import ProtectedRoute from './Components/ProtectedRoute/ProtectedRoute'
 import ProtectedMenu from './Pages/ProtectedMenu/ProtectedMenu'
+import Orders from './Pages/Orders/Orders'
 import './App.css'
 import { ToastContainer } from 'react-toastify';
 
@@ -25,6 +26,11 @@ function App() {
           <Route path='/protected-menu' element={
             <ProtectedRoute>
               <ProtectedMenu/>
+            </ProtectedRoute>
+          }/>
+          <Route path='/orders' element={
+            <ProtectedRoute>
+              <Orders/>
             </ProtectedRoute>
           }/>
         </Routes>
