@@ -17,6 +17,7 @@ function LoginPage() {
         localStorage.setItem('user', JSON.stringify(res.data))
         navigate('/protected-menu')
         toast.success('Logged in successfully !!!')
+        
     }
     return (
     <div className='login-container'>

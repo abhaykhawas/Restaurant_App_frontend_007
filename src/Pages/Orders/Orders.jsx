@@ -34,6 +34,36 @@ function Orders() {
         fetchOrders()
     }, [])
 
+    async function handleTrack(id) {
+        try{
+            const token = JSON.parse(localStorage.getItem('user')).token
+            if(!token){
+                navigate('/login')
+            }
+            const res = await axios.get(`http://localhost:8000/api/v1/order/${id}/track`, {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            })
+
+            toast.info(res.data.status)
+            const temp_orders = orders.map((e,i) => {
+                if(e._id == id) {
+                    orders[i].status = res.data.status
+                }
+                return e
+            })
+
+            setOrders(temp_orders)
+            
+        }
+        catch(err) {
+            localStorage.setItem('user', null)
+            toast.error('Ops logged out !!')
+            navigate('/login')
+        }
+    }
+
     return (
     <div>
         {
@@ -55,7 +85,7 @@ function Orders() {
                     <div className='right-order-container'>
                         <p>To Connect please call 00000</p>
                         <div>
-                            <button>TRACK</button>
+                            <button onClick={() => handleTrack(e._id)}>TRACK</button>
                             <p style={{background: e.status == 'Delivered' ? 'green' : (e.status == 'Rejected' ? 'red': 'yellow')}}>{e.status}</p>
                         </div>
                     </div>
