@@ -2,11 +2,13 @@ import React, {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom';
 import './NonAuthNavbar.css'
 import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 function NonAuthNavbar() {
 
     const navigate = useNavigate()
+    const location = useLocation()
+
 
     const [isAuth, setIsAuth] = useState(false)
 
@@ -15,7 +17,7 @@ function NonAuthNavbar() {
         if(token) {
             setIsAuth(true)
         }
-    }, [])
+    }, [location])
 
 
     function handleLogout() {
@@ -52,7 +54,7 @@ function NonAuthNavbar() {
                                 <Link to={'/orders'}>Orders</Link>
                             </li>
                             <li>
-                                <Link onClick={handleLogout}>Logout</Link>
+                                <Link to={'/login'} onClick={handleLogout}>Logout</Link>
                             </li>
                         </ul>
                     )

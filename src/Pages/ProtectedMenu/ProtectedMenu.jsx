@@ -32,8 +32,10 @@ function ProtectedMenu() {
             }
         })
 
-        console.log(checkoutItem)
-
+        if (checkoutItem.length == 0) {
+            toast.warn('You have an empty cart!!!')
+            return
+        }
         const token = JSON.parse(localStorage.getItem('user')).token
         if(!token){
             navigate('/login')
@@ -89,33 +91,60 @@ function ProtectedMenu() {
                     </div>
                     <div className="menu-card-right">
                         {/* Make this visible only when available */}
-                        <div className="counter">
-                            <button>-</button>
-                            <h3>{menuCounters[i].counter}</h3>
-                            <button onClick={() => {
-                                var updated = []
-                                setMenuCounter(
-                                    (prev) => {
-                                        updated = prev.map((item, idx) => (
-                                            idx == i ? { counter: item.counter+1 } : item
-                                        ))
-                                        
-                                        // calculating total amount
-                                        let newTotal = 0;
-                                        for(let j = 0; j< updated.length; j++){
-                                            newTotal += menu[j].price * updated[j].counter;
+                        {
+                            e.available ?  
+                            <div className="counter">
+                                <button onClick={() => {
+                                    var updated = []
+                                    setMenuCounter(
+                                        (prev) => {
+                                            updated = prev.map((item, idx) => (
+                                                idx == i && item.counter >0 ? { counter: item.counter-1 } : item
+                                            ))
+                                            
+                                            // calculating total amount
+                                            let newTotal = 0;
+                                            for(let j = 0; j< updated.length; j++){
+                                                newTotal += menu[j].price * updated[j].counter;
+                                            }
+
+                                            setTotal(newTotal)
+
+
+                                            return updated
                                         }
-
-                                        setTotal(newTotal)
-
-
-                                        return updated
-                                    }
-                                )
+                                    )
+                                    
                                 
-                            
-                            }}>+</button>
-                        </div>
+                                }}>-</button>
+                                <h3>{menuCounters[i].counter}</h3>
+                                <button onClick={() => {
+                                    var updated = []
+                                    setMenuCounter(
+                                        (prev) => {
+                                            updated = prev.map((item, idx) => (
+                                                idx == i ? { counter: item.counter+1 } : item
+                                            ))
+                                            
+                                            // calculating total amount
+                                            let newTotal = 0;
+                                            for(let j = 0; j< updated.length; j++){
+                                                newTotal += menu[j].price * updated[j].counter;
+                                            }
+
+                                            setTotal(newTotal)
+
+
+                                            return updated
+                                        }
+                                    )
+                                    
+                                
+                                }}>+</button>
+                            </div> 
+                            : 
+                            null
+                        }
                         {e.available ? 'Available': 'Out of stock'}
                     </div>
                 </div>
