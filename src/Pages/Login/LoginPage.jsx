@@ -15,7 +15,12 @@ function LoginPage() {
         const res = await axios.post('http://localhost:8000/api/v1/auth/login',{email, password})
 
         localStorage.setItem('user', JSON.stringify(res.data))
-        navigate('/protected-menu')
+        if(res.data.role == 'ADMIN') {
+            navigate('/admin')
+        }
+        else{
+            navigate('/protected-menu')
+        }
         toast.success('Logged in successfully !!!')
         
     }

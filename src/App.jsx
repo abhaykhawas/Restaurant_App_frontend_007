@@ -10,11 +10,12 @@ import ProtectedMenu from './Pages/ProtectedMenu/ProtectedMenu'
 import Orders from './Pages/Orders/Orders'
 import './App.css'
 import { ToastContainer } from 'react-toastify';
+import AdminDashboard from './Pages/AdminDashboard/adminDashboard'
 
 function App() {
 
   return (
-    <div className="container">
+    <div>
       <ToastContainer/>
       <BrowserRouter>
         <NonAuthNavbar/>
@@ -31,6 +32,11 @@ function App() {
           <Route path='/orders' element={
             <ProtectedRoute>
               <Orders/>
+            </ProtectedRoute>
+          }/>
+          <Route path='/admin' element={
+            <ProtectedRoute>
+              <AdminDashboard/>
             </ProtectedRoute>
           }/>
         </Routes>
