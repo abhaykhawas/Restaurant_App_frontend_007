@@ -30,7 +30,7 @@ function AdminDashboard() {
     async function fetchOrders() {
         try{
             setLoadingOrders(true)
-            const res = await axios.get('http://localhost:8000/api/v1/order/admin/all', { headers : { Authorization: `Bearer ${token}` } })
+            const res = await axios.get('https://restaurant-app-backend-007.vercel.app/api/v1/order/admin/all', { headers : { Authorization: `Bearer ${token}` } })
             setOrders(res.data?.orders || [])
         }
         catch(err) {
@@ -44,7 +44,7 @@ function AdminDashboard() {
     async function fetchMenu() {
         try{
             setLoadingMenu(true)
-            const res = await axios.get('http://localhost:8000/api/v1/menu')
+            const res = await axios.get('https://restaurant-app-backend-007.vercel.app/api/v1/menu')
             console.log("Checking menu", res.data.message)
             setMenuItems(res.data?.message || [])
         }
@@ -60,7 +60,7 @@ function AdminDashboard() {
     async function handleOrderStatus(orderId, payload) {
         try{
             setUpdatingOrderId(orderId)
-            await axios.put(`http://localhost:8000/api/v1/order/admin/${orderId}`, payload, { headers: { Authorization : `Bearer ${token}` } })
+            await axios.put(`https://restaurant-app-backend-007.vercel.app/api/v1/order/admin/${orderId}`, payload, { headers: { Authorization : `Bearer ${token}` } })
             await fetchOrders()
         }
         catch(err){
@@ -74,7 +74,7 @@ function AdminDashboard() {
     async function toggleAvaiable(id, updates) {
         try{
             setSavingMenu(true)
-            await axios.put(`http://localhost:8000/api/v1/menu/${id}`, updates, { headers: { Authorization : `Bearer ${token}` } })
+            await axios.put(`https://restaurant-app-backend-007.vercel.app/api/v1/menu/${id}`, updates, { headers: { Authorization : `Bearer ${token}` } })
             await fetchMenu()
         }
         catch(err){
@@ -97,7 +97,7 @@ function AdminDashboard() {
                 description: newDish.description,
                 available: Boolean(newDish.available)
             }
-            await axios.post(`http://localhost:8000/api/v1/menu`, body, { headers: { Authorization: `Bearer ${token}` } })
+            await axios.post(`https://restaurant-app-backend-007.vercel.app/api/v1/menu`, body, { headers: { Authorization: `Bearer ${token}` } })
             setNewDish({ name: "", price: "", description: "", available: true })
             await fetchMenu()
         }
@@ -113,7 +113,7 @@ function AdminDashboard() {
     async function handleDeleteDish(id) {
         try{
             setSavingMenu(true)
-            await axios.delete(`http://localhost:8000/api/v1/menu/${id}`, { headers : {Authorization: `Bearer ${token}`} })
+            await axios.delete(`https://restaurant-app-backend-007.vercel.app/api/v1/menu/${id}`, { headers : {Authorization: `Bearer ${token}`} })
             await fetchMenu()
         }
         catch(err){

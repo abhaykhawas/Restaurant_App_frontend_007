@@ -14,7 +14,7 @@ function Orders() {
                 navigate('/login')
             }
             try{
-                const res = await axios.get('http://localhost:8000/api/v1/order/', {
+                const res = await axios.get('https://restaurant-app-backend-007.vercel.app/api/v1/order/', {
                     headers: {
                         'Content-Type': 'application/JSON',
                         'Authorization': `Bearer ${token}`
@@ -40,7 +40,7 @@ function Orders() {
             if(!token){
                 navigate('/login')
             }
-            const res = await axios.get(`http://localhost:8000/api/v1/order/${id}/track`, {
+            const res = await axios.get(`https://restaurant-app-backend-007.vercel.app/api/v1/order/${id}/track`, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }

@@ -11,7 +11,7 @@ function ProtectedMenu() {
     const navigate = useNavigate()
     useEffect(() => {
         const fetchMenu = async () => {
-            const res = await axios.get('http://localhost:8000/api/v1/menu/')
+            const res = await axios.get('https://restaurant-app-backend-007.vercel.app/api/v1/menu/')
             console.log(res.data.message.length)
             setMenu(res.data.message)
             let counters = []
@@ -42,7 +42,7 @@ function ProtectedMenu() {
         }
 
         try{
-            const res = await axios.post('http://localhost:8000/api/v1/order/', 
+            const res = await axios.post('https://restaurant-app-backend-007.vercel.app/api/v1/order/', 
                 {
                     "items": checkoutItem,
                     "totalAmount" : total

@@ -6,7 +6,7 @@ function MenuPage() {
     const [menu, setMenu] = useState([])
     useEffect(() => {
         const fetchMenu = async () => {
-            const res = await axios.get('http://localhost:8000/api/v1/menu/')
+            const res = await axios.get('https://restaurant-app-backend-007.vercel.app/api/v1/menu/')
             console.log(res.data.message)
             setMenu(res.data.message)
         }

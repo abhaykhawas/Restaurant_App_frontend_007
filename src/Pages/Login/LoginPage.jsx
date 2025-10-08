@@ -12,7 +12,7 @@ function LoginPage() {
 
     async function handleClick(){
         console.log(email, password)
-        const res = await axios.post('http://localhost:8000/api/v1/auth/login',{email, password})
+        const res = await axios.post('https://restaurant-app-backend-007.vercel.app/api/v1/auth/login',{email, password})
 
         localStorage.setItem('user', JSON.stringify(res.data))
         if(res.data.role == 'ADMIN') {
